@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AdonisJS - A fully featured web framework for Node.js</title>
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet">
+ 
+</head>
+<body>
+
+  <main>
+    <form method="POST" action="{{ route('AuthController.register') }}">
+    {{ csrfField() }}
+    <div class="mb-3">
+      <input type="text" name="name" class="form-control {{ flashMessages.get('errors.name') ? 'is-invalid' : '' }}" />
+      @if (flashMessages.has('errors.name'))
+        <span class="text-danger small">{{ flashMessages.get('errors.name') }}</span>
+      @endif
+    </div>
+    <input type="email" name="email" class="form-control {{ flashMessages.get('errors.email') ? 'is-invalid' : '' }}" />
+      @if (flashMessages.has('errors.email'))
+        <span class="text-danger small">{{ flashMessages.get('errors.email') }}</span>
+      @endif
+    </div>
+    <input type="password" name="password" class="form-control {{ flashMessages.get('errors.password') ? 'is-invalid' : '' }}" />
+      @if (flashMessages.has('errors.password'))
+        <span class="text-danger small">{{ flashMessages.get('errors.password') }}</span>
+      @endif
+    </div>
+    <button type="submit">Cadastrar</button>
+    </form>
+  </main>
+</body>
+</html>

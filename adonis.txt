@@ -1,0 +1,21 @@
+-- startar servidor: node ace serve --watch
+
+-- Criar controle: node ace make:controller NomeController -r´
+
+-- Criar controle de autenticação: node ace make:controller AuthController -r´
+-- npm i @adonisjs/auth
+-- https://docs.adonisjs.com/guides/security/web-security#csrf-protection
+-- https://docs.adonisjs.com/guides/security/web-security
+-- Configurar bcrypt: https://github.com/BassoliCodes/helpdesk/blob/main/config/hash.ts
+-- Bcrypt: npm i phc-bcrypt
+-- hash bcrypt rounds: 12
+
+-- Banco: https://docs.adonisjs.com/guides/database/introduction
+node ace make:model user
+node ace make:migration users
+-- Adicionar variaveis em env e env.ts
+-- importar o banco: node ace migration:run
+
+
+-- Bloquear rotas grupo middleware
+-- start/kernel.ts e registrar -> auth: () => import('App/Middleware/Auth'),
