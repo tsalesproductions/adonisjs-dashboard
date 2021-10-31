@@ -1,35 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AdonisJS - A fully featured web framework for Node.js</title>
-  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet">
- 
-</head>
-<body>
+@include('parts/header')
 
-  <main>
+<section class="min-vh-100 mb-8">
+  <div class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg" style="background-image: url('../assets/img/curved-images/curved14.jpg');">
+    <span class="mask bg-gradient-dark opacity-6"></span>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-5 text-center mx-auto">
+          <h1 class="text-white mb-2 mt-5">Bem vindo</h1>
+          <p class="text-lead text-white">Crie sua conta agora mesmo!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row mt-lg-n10 mt-md-n11 mt-n10">
+      <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
+        <div class="card z-index-0">
+          <div class="card-body">
+            <form role="form text-left" method="POST" action="{{ route('AuthController.register') }}">
+              {{ csrfField() }}
+              <div class="mb-3">
+                <input type="text" name="name" placeholder="Seu nome" class="form-control {{ flashMessages.get('errors.name') ? 'is-invalid' : '' }}" aria-describedby="email-addon" />
+                @if (flashMessages.has('errors.name'))
+                  <span class="text-danger small">{{ flashMessages.get('errors.name') }}</span>
+                @endif
+              </div>
+              <div class="mb-3">
+              <input type="email" name="email" placeholder="contato@suamarca.com" class="form-control {{ flashMessages.get('errors.email') ? 'is-invalid' : '' }}" aria-describedby="email-addon" />
+                @if (flashMessages.has('errors.email'))
+                  <span class="text-danger small">{{ flashMessages.get('errors.email') }}</span>
+                @endif
+              </div>
+              <div class="mb-3">
+              <input type="password" name="password" placeholder="******" class="form-control {{ flashMessages.get('errors.password') ? 'is-invalid' : '' }}" aria-describedby="password-addon" />
+                @if (flashMessages.has('errors.password'))
+                  <span class="text-danger small">{{ flashMessages.get('errors.password') }}</span>
+                @endif
+              </div>
+              <div class="form-check form-check-info text-left">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
+                <label class="form-check-label" for="flexCheckDefault">
+                  Eu concordo com os <a href="javascript:;" class="text-dark font-weight-bolder">Termos e condições</a>
+                </label>
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Cadastrar</button>
+              </div>
+              <p class="text-sm mt-3 mb-0">Já possui uma conta? <a href="/login" class="text-dark font-weight-bolder">Logar</a></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  {{--  <main>
     <form method="POST" action="{{ route('AuthController.register') }}">
     {{ csrfField() }}
     <div class="mb-3">
-      <input type="text" name="name" class="form-control {{ flashMessages.get('errors.name') ? 'is-invalid' : '' }}" />
+      <input type="text" name="name" class="form-control {{ flashMessages.get('errors.name') ? 'is-invalid' : '' }}" aria-describedby="email-addon" />
       @if (flashMessages.has('errors.name'))
         <span class="text-danger small">{{ flashMessages.get('errors.name') }}</span>
       @endif
     </div>
-    <input type="email" name="email" class="form-control {{ flashMessages.get('errors.email') ? 'is-invalid' : '' }}" />
+    <div class="mb-3">
+    <input type="email" name="email" class="form-control {{ flashMessages.get('errors.email') ? 'is-invalid' : '' }}" aria-describedby="email-addon" />
       @if (flashMessages.has('errors.email'))
         <span class="text-danger small">{{ flashMessages.get('errors.email') }}</span>
       @endif
     </div>
-    <input type="password" name="password" class="form-control {{ flashMessages.get('errors.password') ? 'is-invalid' : '' }}" />
+    <div class="mb-3">
+    <input type="password" name="password" class="form-control {{ flashMessages.get('errors.password') ? 'is-invalid' : '' }}" aria-describedby="password-addon" />
       @if (flashMessages.has('errors.password'))
         <span class="text-danger small">{{ flashMessages.get('errors.password') }}</span>
       @endif
     </div>
     <button type="submit">Cadastrar</button>
     </form>
-  </main>
+  </main>  --}}
 </body>
 </html>
+
+@include('parts/footer')
